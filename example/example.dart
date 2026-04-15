@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loading_container_flutter/src/loading_container_widget.dart';
+import 'package:shimmer_container_flutter/src/shimmer_container_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: LoadingContainerWidget(
+          child: ShimmerContainer(
             width: 200,
             height: 50,
             colorOne: Colors.grey[300],

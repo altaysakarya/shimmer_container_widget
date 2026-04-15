@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoadingContainerWidget extends StatefulWidget {
+class ShimmerContainer extends StatefulWidget {
   final Color? colorOne;
   final Color? colorTwo;
   final double width;
@@ -8,7 +8,7 @@ class LoadingContainerWidget extends StatefulWidget {
   final BorderRadius? borderRadius;
   final BoxDecoration? boxDecoration;
   final Duration? duration;
-  const LoadingContainerWidget({
+  const ShimmerContainer({
     super.key,
     this.width = double.infinity,
     this.height = 50,
@@ -20,10 +20,11 @@ class LoadingContainerWidget extends StatefulWidget {
   });
 
   @override
-  State<LoadingContainerWidget> createState() => _LoadingContainerWidgetState();
+  State<ShimmerContainer> createState() => _ShimmerContainerState();
 }
 
-class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with SingleTickerProviderStateMixin {
+class _ShimmerContainerState extends State<ShimmerContainer>
+    with SingleTickerProviderStateMixin {
   late Color colorOne;
   late Color colorTwo;
   late AnimationController _animationController;
@@ -43,8 +44,11 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
   void _initialize() {
     colorOne = widget.colorOne ?? const Color(0xFFE5E5E5);
     colorTwo = widget.colorTwo ?? const Color(0xFFF0F0F0);
-    _animationController = AnimationController(vsync: this, duration: widget.duration ?? const Duration(milliseconds: 750));
-    _animation = Tween<double>(begin: 0, end: 1.0).animate(_animationController);
+    _animationController = AnimationController(
+        vsync: this,
+        duration: widget.duration ?? const Duration(milliseconds: 750));
+    _animation =
+        Tween<double>(begin: 0, end: 1.0).animate(_animationController);
   }
 
   void _listen() {
@@ -85,13 +89,21 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
               height: widget.height,
               decoration: widget.boxDecoration != null
                   ? widget.boxDecoration?.copyWith(
-                      color: widget.boxDecoration?.color != null ? null : colorOne,
-                      borderRadius: widget.boxDecoration?.borderRadius != null ||
-                              (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
-                          ? null
-                          : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
+                      color:
+                          widget.boxDecoration?.color != null ? null : colorOne,
+                      borderRadius:
+                          widget.boxDecoration?.borderRadius != null ||
+                                  (widget.boxDecoration?.shape ??
+                                          BoxShape.rectangle) ==
+                                      BoxShape.circle
+                              ? null
+                              : (widget.borderRadius ??
+                                  BorderRadius.circular(kRadius)),
                     )
-                  : BoxDecoration(color: colorOne, borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius)),
+                  : BoxDecoration(
+                      color: colorOne,
+                      borderRadius: widget.borderRadius ??
+                          BorderRadius.circular(kRadius)),
             ),
           ),
           Align(
@@ -101,7 +113,8 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
               builder: (context, child) {
                 return ClipRect(
                   child: Align(
-                    alignment: start ? Alignment.centerLeft : Alignment.centerRight,
+                    alignment:
+                        start ? Alignment.centerLeft : Alignment.centerRight,
                     widthFactor: _animation.value,
                     child: child,
                   ),
@@ -112,15 +125,22 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
                 height: widget.height,
                 decoration: widget.boxDecoration != null
                     ? widget.boxDecoration?.copyWith(
-                        color: widget.boxDecoration?.color != null ? null : colorTwo,
-                        borderRadius: widget.boxDecoration?.borderRadius != null ||
-                                (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
+                        color: widget.boxDecoration?.color != null
                             ? null
-                            : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
+                            : colorTwo,
+                        borderRadius:
+                            widget.boxDecoration?.borderRadius != null ||
+                                    (widget.boxDecoration?.shape ??
+                                            BoxShape.rectangle) ==
+                                        BoxShape.circle
+                                ? null
+                                : (widget.borderRadius ??
+                                    BorderRadius.circular(kRadius)),
                       )
                     : BoxDecoration(
                         color: colorTwo,
-                        borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius),
+                        borderRadius: widget.borderRadius ??
+                            BorderRadius.circular(kRadius),
                       ),
               ),
             ),

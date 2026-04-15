@@ -1,12 +1,10 @@
-## LoadingContainerWidget
+## ShimmerContainer
 
-The `LoadingContainerWidget` is a customizable, animated loading widget for Flutter applications. It provides a shimmering effect by sliding a secondary color over a primary color, giving the appearance of a content placeholder being loaded. The animation is cyclic, ensuring a continuous loading effect.
+The `ShimmerContainer` is a customizable, animated loading widget for Flutter applications. It provides a shimmering effect by sliding a secondary color over a primary color, giving the appearance of a content placeholder being loaded. The animation is cyclic, ensuring a continuous loading effect.
 
-## Buy Me A Coffee ☕️
+## Example ☕️
 
-<a href="https://www.buymeacoffee.com/altaysakarya" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-<img src="https://github.com/altaysakarya/loading_container/blob/main/example.gif?raw=true" width="192" height="388" alt="Example GIF">
+<img src="https://github.com/altaysakarya/shimmer_container_widget/blob/main/example.gif?raw=true" width="192" height="388" alt="Example GIF">
 
 ## Installation
 
@@ -14,7 +12,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  loading_container: ^0.0.1
+  loading_container: ^0.0.2
 ```
 
 ## Features
@@ -37,7 +35,7 @@ dependencies:
 ## Usage
 
 ```dart
-LoadingContainerWidget(
+ShimmerContainer(
   width: 200,
   height: 50,
   colorOne: Colors.grey[300],
